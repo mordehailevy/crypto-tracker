@@ -1,0 +1,126 @@
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.80);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.18s ease;
+  padding: 1rem;
+}
+
+.dialog-box {
+  background: linear-gradient(145deg, #141c2e 0%, #0e1420 100%);
+  border: 1px solid var(--border-bright);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: var(--shadow-modal);
+  animation: fadeInScale 0.22s var(--transition-spring);
+  position: relative;
+  overflow: hidden;
+}
+
+.dialog-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+}
+
+.dialog-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.dialog-text {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.dialog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dialog-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition);
+}
+
+.dialog-item:hover {
+  border-color: var(--border-bright);
+}
+
+.dialog-item img {
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.dialog-item span {
+  flex: 1;
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.dialog-remove-btn {
+  padding: 0.3rem 0.7rem;
+  background: var(--red-dim);
+  color: var(--red);
+  border: 1px solid rgba(246,70,93,0.3);
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: all var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dialog-remove-btn:hover {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+
+.dialog-cancel-btn {
+  width: 100%;
+  padding: 0.6rem;
+  background: rgba(255,255,255,0.04);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: all var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.dialog-cancel-btn:hover {
+  background: rgba(255,255,255,0.07);
+  color: var(--text-primary);
+  border-color: var(--border-bright);
+}

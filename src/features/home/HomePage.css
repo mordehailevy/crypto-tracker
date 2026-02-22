@@ -1,0 +1,36 @@
+.home-page {
+  animation: fadeIn 0.3s ease;
+}
+
+.home-stats-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  padding: 0.7rem 1.25rem;
+  background: linear-gradient(90deg, rgba(240,185,11,0.04) 0%, transparent 40%);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.home-stats-bar strong {
+  color: var(--accent);
+  font-weight: 800;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+.coins-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .coins-grid { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
+}
+

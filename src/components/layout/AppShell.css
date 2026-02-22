@@ -1,0 +1,51 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+  color: var(--text-primary);
+}
+
+.app-main {
+  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.75rem;
+}
+
+@media (max-width: 768px) {
+  .app-main { padding: 1.25rem 1rem; }
+}
+
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 2rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  background: rgba(8,11,15,0.95);
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
+}
+
+.app-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.app-footer-left span { color: var(--accent); font-weight: 700; }
+
+.app-footer a {
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+
+.app-footer a:hover {
+  color: var(--accent);
+}
+

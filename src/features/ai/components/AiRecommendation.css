@@ -1,0 +1,79 @@
+.ai-rec {
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-top: 0.85rem;
+  border: 1px solid;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-rec::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+}
+
+.ai-rec--buy {
+  background: rgba(14,203,129,0.06);
+  border-color: rgba(14,203,129,0.25);
+}
+
+.ai-rec--buy::before {
+  background: var(--green);
+}
+
+.ai-rec--sell {
+  background: rgba(246,70,93,0.06);
+  border-color: rgba(246,70,93,0.25);
+}
+
+.ai-rec--sell::before {
+  background: var(--red);
+}
+
+.ai-rec__header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.ai-rec__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  padding: 0.22rem 0.7rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.ai-rec--buy .ai-rec__badge {
+  background: var(--green);
+  color: #000;
+}
+
+.ai-rec--sell .ai-rec__badge {
+  background: var(--red);
+  color: #fff;
+}
+
+.ai-rec__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ai-rec__reasoning {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  margin: 0;
+  opacity: 0.9;
+}
