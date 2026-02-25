@@ -1,5 +1,7 @@
 .coins-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.1rem;
+  align-items: stretch;
+  margin-bottom: 1.5rem;
 }

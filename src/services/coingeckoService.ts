@@ -15,17 +15,14 @@ export const fetchTopCoins = async (): Promise<CoinSummary[]> => {
         sparkline: false,
         price_change_percentage: '30d,60d,200d',
       },
-      timeout: 3000,
+      timeout: 8000,
     });
     if (Array.isArray(data) && data.length > 0) return data;
     return MOCK_COINS;
   };
 
-  const fallbackAfterDelay = (): Promise<CoinSummary[]> =>
-    new Promise((resolve) => setTimeout(() => resolve(MOCK_COINS), 2000));
-
   try {
-    return await Promise.race([fetchFromApi(), fallbackAfterDelay()]);
+    return await fetchFromApi();
   } catch {
     return MOCK_COINS;
   }

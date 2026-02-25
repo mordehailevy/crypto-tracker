@@ -68,6 +68,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
@@ -107,6 +108,11 @@ img { max-width: 100%; display: block; }
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+::selection {
+  background: rgba(240,185,11,0.35);
+  color: #0b0f14;
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(12px); }

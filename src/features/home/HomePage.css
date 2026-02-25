@@ -1,5 +1,6 @@
 .home-page {
   animation: fadeIn 0.3s ease;
+  padding-bottom: 2rem;
 }
 
 .home-stats-bar {
@@ -8,14 +9,16 @@
   gap: 1.5rem;
   flex-wrap: wrap;
   margin-bottom: 1.25rem;
-  padding: 0.7rem 1.25rem;
-  background: linear-gradient(90deg, rgba(240,185,11,0.04) 0%, transparent 40%);
-  border: 1px solid var(--border);
+  padding: 0.75rem 1.35rem;
+  background: rgba(14,20,32,0.7);
+  border: 1px solid rgba(255,255,255,0.05);
   border-left: 3px solid var(--accent);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   font-size: 0.82rem;
   color: var(--text-secondary);
   letter-spacing: 0.01em;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
 .home-stats-bar strong {
@@ -24,13 +27,7 @@
   font-family: 'Space Grotesk', 'Inter', sans-serif;
 }
 
-.coins-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-  gap: 1rem;
-}
-
 @media (max-width: 480px) {
-  .coins-grid { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
+  .home-stats-bar { padding: 0.65rem 1rem; }
 }
 
