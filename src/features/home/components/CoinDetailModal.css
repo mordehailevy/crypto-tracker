@@ -458,23 +458,8 @@
 .detail-value.positive { color: var(--green); }
 .detail-value.negative { color: var(--red); }
 
-.detail-loading {
-  color: var(--text-secondary);
-  padding: 2.5rem 1rem;
-  font-size: 0.9rem;
-}
-
-.detail-loading::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 32px;
-  border: 3px solid var(--border);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  margin: 0 auto 1rem;
-  animation: spin 0.8s linear infinite;
-}
+/* Note: loader visual is provided by the .detail-loading-spinner element in the markup.
+   Removed the duplicate ::before spinner to avoid showing two indicators at once. */
 
 @keyframes spin {
   to { transform: rotate(360deg); }
