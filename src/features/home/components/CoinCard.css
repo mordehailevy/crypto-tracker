@@ -13,6 +13,9 @@
   overflow: hidden;
   cursor: default;
   box-shadow: var(--shadow-card);
+  content-visibility: auto;
+  contain: layout paint;
+  contain-intrinsic-size: 280px 360px;
 }
 
 .coin-card::after {
@@ -209,6 +212,25 @@
 }
 .coin-card--selected .coin-card__logo3d::before {
   animation-duration: 2.8s;
+}
+
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+  .coin-card,
+  .coin-card::after,
+  .coin-card--selected,
+  .coin-card__logo3d::before,
+  .coin-card__logo3d-sphere {
+    animation: none !important;
+  }
+
+  .coin-card {
+    transition: none;
+  }
+
+  .coin-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-card);
+  }
 }
 
 .coin-card__icon {

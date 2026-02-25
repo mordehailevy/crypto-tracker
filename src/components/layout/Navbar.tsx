@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { setSearchQuery } from '../../features/home/homeSlice';
+import { selectSearchQuery } from '../../features/home/homeSelectors';
 import './Navbar.css';
 
 const IconMarket = () => (
@@ -42,42 +45,69 @@ const links = [
   { to: '/about', label: 'About',  Icon: IconAbout },
 ];
 
-export const Navbar: React.FC = () => (
-  <nav className="navbar">
-    <div className="navbar-brand">
-      <div className="navbar-brand-logo">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="10" stroke="url(#goldRing)" strokeWidth="1.5"/>
-          <path d="M9 7h4.5a2.5 2.5 0 0 1 0 5H9m0-5v10m0-5h5a2.5 2.5 0 0 1 0 5H9" stroke="url(#goldStroke)" strokeWidth="1.8" strokeLinecap="round"/>
-          <defs>
-            <linearGradient id="goldRing" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#f0b90b"/>
-              <stop offset="100%" stopColor="#ffd15c"/>
-            </linearGradient>
-            <linearGradient id="goldStroke" x1="9" y1="7" x2="15" y2="17" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#ffd15c"/>
-              <stop offset="100%" stopColor="#f0b90b"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-      <span className="navbar-brand-text">Crypto<span className="accent">Tracker</span></span>
-    </div>
+export const Navbar: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const searchQuery = useAppSelector(selectSearchQuery);
 
-    <ul className="navbar-links">
-      {links.map(({ to, label, Icon, badge }) => (
-        <li key={to}>
-          <NavLink
-            to={to}
-            end={to === '/'}
-            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-          >
-            <span className="nav-link-icon"><Icon /></span>
-            <span className="nav-link-label">{label}</span>
-            {badge && <span className="nav-badge">{badge}</span>}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
-  </nav>
-);
+  const handleSearch = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => dispatch(setSearchQuery(e.target.value)),
+    [dispatch],
+  );
+
+  const clearSearch = useCallback(() => dispatch(setSearchQuery('')), [dispatch]);
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-brand">
+        <div className="navbar-brand-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="url(#goldRing)" strokeWidth="1.5"/>
+            <path d="M9 7h4.5a2.5 2.5 0 0 1 0 5H9m0-5v10m0-5h5a2.5 2.5 0 0 1 0 5H9" stroke="url(#goldStroke)" strokeWidth="1.8" strokeLinecap="round"/>
+            <defs>
+              <linearGradient id="goldRing" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#f0b90b"/>
+                <stop offset="100%" stopColor="#ffd15c"/>
+              </linearGradient>
+              <linearGradient id="goldStroke" x1="9" y1="7" x2="15" y2="17" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#ffd15c"/>
+                <stop offset="100%" stopColor="#f0b90b"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span className="navbar-brand-text">Crypto<span className="accent">Tracker</span></span>
+      </div>
+
+      {/* ── Search box inside Navbar ── */}
+      <div className="navbar-search">
+        <span className="navbar-search-icon">🔍</span>
+        <input
+          className="navbar-search-input"
+          type="text"
+          placeholder="Search coin..."
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+        {searchQuery && (
+          <button className="navbar-search-clear" onClick={clearSearch}>✕</button>
+        )}
+      </div>
+
+      <ul className="navbar-links">
+        {links.map(({ to, label, Icon, badge }) => (
+          <li key={to}>
+            <NavLink
+              to={to}
+              end={to === '/'}
+              className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+            >
+              <span className="nav-link-icon"><Icon /></span>
+              <span className="nav-link-label">{label}</span>
+              {badge && <span className="nav-badge">{badge}</span>}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};

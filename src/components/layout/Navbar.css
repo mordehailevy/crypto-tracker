@@ -64,6 +64,59 @@
 
 .navbar-brand-text .accent { color: var(--accent); }
 
+/* ── Search box inside Navbar ── */
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.8rem;
+  min-width: 180px;
+  max-width: 280px;
+  flex: 1;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.navbar-search:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(240,185,11,0.15);
+}
+
+.navbar-search-icon {
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.navbar-search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  width: 100%;
+  font-family: inherit;
+}
+
+.navbar-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.navbar-search-clear {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0;
+  transition: color var(--transition);
+}
+
+.navbar-search-clear:hover {
+  color: var(--red);
+}
+
 .navbar-links {
   list-style: none;
   display: flex;

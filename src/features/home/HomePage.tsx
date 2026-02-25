@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { useCoins } from './hooks/useCoins';
-import { CoinsSearch } from './components/CoinsSearch';
 import { CoinsGrid } from './components/CoinsGrid';
 import { SelectionDialog } from './components/SelectionDialog';
 import { CoinDetailModal } from './components/CoinDetailModal';
@@ -12,13 +11,11 @@ export const HomePage: React.FC = () => {
   const {
     coins,
     selectedIds,
-    searchQuery,
     error,
     coinDetails,
     detailLoading,
     dialogOpen,
     pendingCoinId,
-    handleSearch,
     handleToggle,
     handleMoreInfo,
     handleReplace,
@@ -52,8 +49,6 @@ export const HomePage: React.FC = () => {
         <span>Selected: <strong>{selectedIds.length}</strong> / 5</span>
         <span style={{ marginLeft: 'auto', color: 'var(--green)' }}>● Live data</span>
       </div>
-
-      <CoinsSearch value={searchQuery} onChange={handleSearch} />
 
       {effectiveCoins.length === 0 ? (
         <EmptyState text="No cryptocurrency found." />

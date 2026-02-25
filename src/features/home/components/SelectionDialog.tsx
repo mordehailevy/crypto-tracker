@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAppSelector } from '../../../app/hooks';
 import { selectSelectedIds, selectCoins } from '../homeSelectors';
 import './SelectionDialog.css';
@@ -15,13 +15,27 @@ export const SelectionDialog: React.FC<Props> = React.memo(
     const selectedIds = useAppSelector(selectSelectedIds);
     const coins = useAppSelector(selectCoins);
 
+    // Block Escape key — user MUST choose a coin to remove
+    useEffect(() => {
+      if (!open) return;
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      };
+      document.addEventListener('keydown', handleKeyDown, true);
+      return () => document.removeEventListener('keydown', handleKeyDown, true);
+    }, [open]);
+
     if (!open || !pendingCoinId) return null;
 
     const selectedCoins = coins.filter((c) => selectedIds.includes(c.id));
     const pendingCoin = coins.find((c) => c.id === pendingCoinId);
 
     return (
-      <div className="dialog-overlay" onClick={onCancel}>
+      // No onClick on overlay — dialog cannot be dismissed without choosing
+      <div className="dialog-overlay">
         <div className="dialog-box" onClick={(e) => e.stopPropagation()}>
           <h2 className="dialog-title">⚠️ Limit reached (5 max)</h2>
           <p className="dialog-text">
@@ -46,7 +60,7 @@ export const SelectionDialog: React.FC<Props> = React.memo(
             ))}
           </ul>
           <button className="dialog-cancel-btn" onClick={onCancel}>
-            Cancel
+            Cancel (keep current selection)
           </button>
         </div>
       </div>

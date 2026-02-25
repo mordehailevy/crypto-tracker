@@ -9,7 +9,11 @@ export const AboutPage: React.FC = () => (
     </div>
 
     <div className="about-card">
-      <span className="about-avatar">👤</span>
+      <img
+        className="about-photo"
+        src="https://ui-avatars.com/api/?name=Mordehai+Levy&background=f0b90b&color=080b0f&size=128&bold=true&font-size=0.4"
+        alt="Mordehai Levy"
+      />
       <h2 className="about-name">Mordehai Levy</h2>
       <p className="about-role">Full Stack Developer</p>
     </div>

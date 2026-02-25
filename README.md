@@ -26,7 +26,7 @@ Application SPA professionnelle (niveau Production) construite avec **React**, *
 
 ```bash
 # Cloner le repo
-git clone <your-repo-url>
+git clone https://github.com/mordehailevy/crypto-tracker.git
 cd application\ cryptomonais
 
 # Installer les dépendances
@@ -83,3 +83,8 @@ src/
 ## 📝 Licence
 
 Projet éducatif — usage personnel.
+
+## 🔗 Liens
+
+- **GitHub** : [https://github.com/mordehailevy/crypto-tracker](https://github.com/mordehailevy/crypto-tracker)
+- **Déploiement Cloud** : <!-- Ajouter l'URL de déploiement ici (Netlify, Vercel, etc.) -->
