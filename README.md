@@ -87,4 +87,4 @@ Projet éducatif — usage personnel.
 ## 🔗 Liens
 
 - **GitHub** : [https://github.com/mordehailevy/crypto-tracker](https://github.com/mordehailevy/crypto-tracker)
-- **Déploiement Cloud** : <!-- Ajouter l'URL de déploiement ici (Netlify, Vercel, etc.) -->
+- **Déploiement Cloud** : [https://crypto-tracker-psi-ten.vercel.app](https://crypto-tracker-psi-ten.vercel.app)
