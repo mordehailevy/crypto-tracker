@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
 import type { CoinSummary, CoinDetail } from '../../types';
 import { fetchTopCoins, fetchCoinDetail } from '../../services';
-import { MOCK_COINS } from '../../services/mockData';
 
 interface HomeState {
   coins: CoinSummary[];
@@ -27,10 +26,10 @@ const loadPersistedIds = (): string[] => {
 };
 
 const initialState: HomeState = {
-  coins: MOCK_COINS,
+  coins: [],
   selectedIds: loadPersistedIds(),
   searchQuery: '',
-  loading: false,
+  loading: true,
   error: null,
   lastFetchedAt: null,
   coinDetails: {},
@@ -114,6 +113,7 @@ const homeSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadCoins.pending, (state) => {
+        state.loading = true;
         state.error = null;
       })
       .addCase(loadCoins.fulfilled, (state, action) => {

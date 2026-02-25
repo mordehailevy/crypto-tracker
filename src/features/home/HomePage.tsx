@@ -3,14 +3,14 @@ import { useCoins } from './hooks/useCoins';
 import { CoinsGrid } from './components/CoinsGrid';
 import { SelectionDialog } from './components/SelectionDialog';
 import { CoinDetailModal } from './components/CoinDetailModal';
-import { ErrorState, EmptyState } from '../../components/common';
-import { MOCK_COINS } from '../../services/mockData';
+import { ErrorState, EmptyState, Loader } from '../../components/common';
 import './HomePage.css';
 
 export const HomePage: React.FC = () => {
   const {
     coins,
     selectedIds,
+    loading,
     error,
     coinDetails,
     detailLoading,
@@ -39,7 +39,6 @@ export const HomePage: React.FC = () => {
     return <ErrorState message={error} onRetry={handleRetry} />;
   }
 
-  const effectiveCoins = coins.length > 0 ? coins : MOCK_COINS;
   const viewedDetail = viewingCoinId ? coinDetails[viewingCoinId] ?? null : null;
 
   return (
@@ -50,11 +49,13 @@ export const HomePage: React.FC = () => {
         <span style={{ marginLeft: 'auto', color: 'var(--green)' }}>● Live data</span>
       </div>
 
-      {effectiveCoins.length === 0 ? (
-        <EmptyState text="No cryptocurrency found." />
+      {loading && coins.length === 0 ? (
+        <Loader text="Chargement des 100 cryptomonnaies..." />
+      ) : coins.length === 0 ? (
+        <EmptyState text="Aucune cryptomonnaie trouvée." />
       ) : (
         <CoinsGrid
-          coins={effectiveCoins}
+          coins={coins}
           selectedIds={selectedIds}
           onToggle={handleToggle}
           onMoreInfo={onMoreInfo}
