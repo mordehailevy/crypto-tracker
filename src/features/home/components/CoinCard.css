@@ -1,13 +1,15 @@
 .coin-card {
   background: var(--bg-card);
-  background-image: linear-gradient(145deg, rgba(255,255,255,0.025) 0%, transparent 60%);
+  background-image:
+    linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.00) 55%),
+    linear-gradient(0deg, rgba(240,185,11,0.04) 0%, transparent 70%);
   border-radius: var(--radius-lg);
   padding: 1.4rem 1.1rem 1.1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.06);
   transition: transform var(--transition-spring), box-shadow var(--transition), border-color var(--transition);
   position: relative;
   overflow: hidden;
@@ -42,6 +44,9 @@
   border-color: rgba(240,185,11,0.5);
   background: linear-gradient(145deg, rgba(240,185,11,0.07) 0%, var(--bg-card) 60%);
   box-shadow: 0 0 0 1px rgba(240,185,11,0.25), var(--shadow-glow-gold);
+}
+
+.coin-card--selected:hover {
   animation: glowPulse 3s ease-in-out infinite;
 }
 
@@ -150,6 +155,7 @@
     rgba(240,185,11,0.00) 100%
   );
   animation: coinOrbit 4.5s linear infinite;
+  animation-play-state: paused;
   z-index: 0;
   pointer-events: none;
 }
@@ -179,6 +185,7 @@
   animation:
     coinOrbit   4.5s cubic-bezier(0.37,0,0.63,1) infinite,
     coinBreathe 3.2s ease-in-out infinite;
+  animation-play-state: paused;
 
   background:
     radial-gradient(circle at 32% 28%, rgba(255,255,255,0.28) 0%, transparent 40%),
@@ -192,7 +199,19 @@
   will-change: transform;
 }
 
+.coin-card:hover .coin-card__logo3d::before,
 .coin-card:hover .coin-card__logo3d-sphere {
+  animation-play-state: running;
+}
+
+/* Rotation continue quand la carte est sélectionnée */
+.coin-card--selected .coin-card__logo3d::before,
+.coin-card--selected .coin-card__logo3d-sphere {
+  animation-play-state: running !important;
+}
+
+/* Sur hover d'une carte NON sélectionnée : on arrête la rotation pour montrer l'effet scale */
+.coin-card:not(.coin-card--selected):hover .coin-card__logo3d-sphere {
   animation-play-state: paused;
   transform: rotateX(0deg) rotateY(0deg) scale3d(1.10,1.10,1.10) !important;
   box-shadow:
@@ -358,15 +377,15 @@
 
 .coin-card__symbol {
   font-size: 0.72rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   margin: 0;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.09em;
-  background: rgba(255,255,255,0.04);
+  background: rgba(240,185,11,0.12);
   padding: 0.1rem 0.45rem;
   border-radius: var(--radius-xs);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(240,185,11,0.35);
 }
 
 .coin-card__price {
@@ -429,9 +448,9 @@
 
 .coin-card__btn {
   padding: 0.38rem 1rem;
-  background: rgba(255,255,255,0.04);
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
+  background: rgba(12,18,30,0.9);
+  color: var(--text-primary);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 0.78rem;
@@ -439,6 +458,7 @@
   transition: all var(--transition);
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
 }
 
 .coin-card__btn:hover {
@@ -467,7 +487,7 @@
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background: var(--border);
+  background: rgba(255,255,255,0.08);
   border-radius: var(--radius-full);
   transition: 0.26s cubic-bezier(0.4,0,0.2,1);
   border: 1px solid rgba(255,255,255,0.06);
@@ -543,125 +563,3 @@
   line-height: 1.4;
 }
 
-.coin-card__icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  margin-top: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}
-
-.coin-card__name {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin: 0;
-  color: var(--text-primary);
-  letter-spacing: 0.01em;
-}
-
-.coin-card__symbol {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  margin: 0;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-}
-
-.coin-card__price {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0.3rem 0 0;
-  font-variant-numeric: tabular-nums;
-}
-
-.coin-card__change {
-  font-size: 0.82rem;
-  font-weight: 700;
-  margin: 0;
-  padding: 0.18rem 0.6rem;
-  border-radius: 4px;
-  letter-spacing: 0.02em;
-}
-
-.coin-card__change.positive {
-  color: var(--green);
-  background: rgba(14,203,129,0.12);
-}
-
-.coin-card__change.negative {
-  color: var(--red);
-  background: rgba(246,70,93,0.12);
-}
-
-.coin-card__actions {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-top: 0.8rem;
-  width: 100%;
-  justify-content: center;
-}
-
-.coin-card__btn {
-  padding: 0.38rem 0.85rem;
-  background: var(--bg-surface);
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 600;
-  transition: var(--transition);
-  letter-spacing: 0.02em;
-}
-
-.coin-card__btn:hover {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #000;
-}
-
-.coin-card__switch {
-  position: relative;
-  display: inline-block;
-  width: 42px;
-  height: 22px;
-}
-
-.coin-card__switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.coin-card__slider {
-  position: absolute;
-  cursor: pointer;
-  inset: 0;
-  background: var(--border);
-  border-radius: 22px;
-  transition: 0.28s;
-}
-
-.coin-card__slider::before {
-  content: '';
-  position: absolute;
-  height: 16px;
-  width: 16px;
-  left: 3px;
-  bottom: 3px;
-  background: var(--text-secondary);
-  border-radius: 50%;
-  transition: 0.28s;
-}
-
-.coin-card__switch input:checked + .coin-card__slider {
-  background: var(--accent);
-}
-
-.coin-card__switch input:checked + .coin-card__slider::before {
-  transform: translateX(20px);
-  background: #000;
-}
