@@ -235,10 +235,13 @@
 
 @media (max-width: 900px), (prefers-reduced-motion: reduce) {
   .coin-card,
-  .coin-card::after,
-  .coin-card--selected,
-  .coin-card__logo3d::before,
-  .coin-card__logo3d-sphere {
+  .coin-card::after {
+    animation: none !important;
+  }
+
+  /* On mobile/reduced-motion : on désactive les animations sauf pour les cartes sélectionnées */
+  .coin-card:not(.coin-card--selected) .coin-card__logo3d::before,
+  .coin-card:not(.coin-card--selected) .coin-card__logo3d-sphere {
     animation: none !important;
   }
 
@@ -252,6 +255,11 @@
   }
 }
 
+@keyframes iconSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 .coin-card__icon {
   width: 48px;
   height: 48px;
@@ -259,10 +267,14 @@
   position: relative;
   z-index: 4;
   display: block;
-  filter: saturate(1.20) contrast(1.08) brightness(1.02);
+  filter: saturate(1.2) contrast(1.08) drop-shadow(0 2px 6px rgba(0,0,0,0.60));
   transition: filter 0.35s ease;
   backface-visibility: visible;
-  filter: saturate(1.2) contrast(1.08) drop-shadow(0 2px 6px rgba(0,0,0,0.60));
+}
+
+/* L'icône tourne en continu quand la carte est sélectionnée */
+.coin-card--selected .coin-card__icon {
+  animation: iconSpin 3s linear infinite;
 }
 
 .coin-card:hover .coin-card__icon {
