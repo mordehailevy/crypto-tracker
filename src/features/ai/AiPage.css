@@ -321,3 +321,27 @@
   margin-bottom: 0.75rem;
   opacity: 0.4;
 }
+
+/* ── Responsive mobile ── */
+@media (max-width: 540px) {
+  .ai-coin-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .ai-coin-price {
+    order: 3;
+    font-size: 0.82rem;
+  }
+
+  .ai-coin-btn {
+    order: 4;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .ai-coin-info {
+    flex: 1;
+  }
+}

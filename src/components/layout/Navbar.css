@@ -229,4 +229,9 @@
   .nav-link-label { display: none; }
   .navbar-brand-text { display: none; }
   .nav-link-icon { width: 32px; height: 32px; }
+  .navbar-search { display: none; }
+}
+
+@media (max-width: 900px) and (min-width: 641px) {
+  .navbar-search { min-width: 120px; max-width: 180px; }
 }

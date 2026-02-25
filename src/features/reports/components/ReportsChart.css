@@ -30,3 +30,12 @@
 .reports-chart-inner {
   height: 380px;
 }
+
+@media (max-width: 640px) {
+  .reports-chart {
+    padding: 1rem 0.75rem 0.75rem;
+  }
+  .reports-chart-inner {
+    height: 240px;
+  }
+}
