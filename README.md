@@ -34,7 +34,8 @@ npm install
 
 # Configurer les clés API
 cp .env.example .env
-# Éditer .env avec ta clé OpenAI
+# Éditer .env avec ta clé OpenAI (OPENAI_API_KEY)
+# Pour tester la page IA en local : npx vercel dev
 ```
 
 ## ▶️ Lancement
@@ -68,7 +69,7 @@ src/
 | Variable | Description |
 |----------|------------|
 | `VITE_COINGECKO_BASE_URL` | URL de base CoinGecko (défaut: `https://api.coingecko.com/api/v3`) |
-| `VITE_OPENAI_API_KEY` | Clé API OpenAI pour les recommandations IA |
+| `OPENAI_API_KEY` | Clé API OpenAI, **côté serveur uniquement** (utilisée par `api/recommend.ts`). Ne jamais la préfixer par `VITE_`. |
 
 ## 🔑 Points clés d'architecture
 
