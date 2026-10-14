@@ -21,15 +21,6 @@ const IconLive = () => (
   </svg>
 );
 
-const IconAI = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1v1a4 4 0 0 1-8 0v-1H7a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z"/>
-    <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/>
-    <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/>
-    <path d="M9 14s1 1 3 1 3-1 3-1"/>
-  </svg>
-);
-
 const IconAbout = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10"/>
@@ -41,7 +32,6 @@ const IconAbout = () => (
 const links = [
   { to: '/', label: 'Market',      Icon: IconMarket },
   { to: '/reports', label: 'Live', Icon: IconLive,  badge: 'LIVE' },
-  { to: '/ai', label: 'AI',        Icon: IconAI },
   { to: '/about', label: 'About',  Icon: IconAbout },
 ];
 

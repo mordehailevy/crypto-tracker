@@ -25,7 +25,7 @@ export const AppShell: React.FC = () => {
         <div className="app-footer-left">
           <span>₿</span> CryptoTracker
         </div>
-        <span>© {new Date().getFullYear()} — React + TypeScript + OpenAI</span>
+        <span>© {new Date().getFullYear()} — React + TypeScript</span>
         <span>Data: CoinGecko · CryptoCompare</span>
       </footer>
     </div>
