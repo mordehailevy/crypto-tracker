@@ -25,8 +25,7 @@ export const AboutPage: React.FC = () => (
         that lets you track the top 100 most popular cryptocurrencies in real time.
       </p>
       <p>
-        He built it with live price charts, a personalised coin watchlist,
-        and AI-powered investment recommendations via OpenAI.
+        He built it with live price charts and a personalised coin watchlist.
       </p>
     </div>
 
@@ -39,7 +38,6 @@ export const AboutPage: React.FC = () => (
         <li>Chart.js + react-chartjs-2 (Charts)</li>
         <li>Axios (HTTP Client)</li>
         <li>CoinGecko API (Crypto Data)</li>
-        <li>OpenAI API (AI Recommendations)</li>
         <li>Vite (Build Tool)</li>
         <li>Pure CSS (Styling)</li>
       </ul>
@@ -51,7 +49,6 @@ export const AboutPage: React.FC = () => (
         <li>100 coins with real-time search</li>
         <li>Select up to 5 coins (localStorage)</li>
         <li>Live price chart (polling)</li>
-        <li>AI Analysis — Buy / Do Not Buy</li>
         <li>Feature-Based Architecture, Clean Code, SOLID</li>
       </ul>
     </div>
