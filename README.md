@@ -8,7 +8,6 @@ Application SPA professionnelle (niveau Production) construite avec **React**, *
 |------|------------|
 | **Accueil** | Affiche les 100 cryptos les plus populaires (CoinGecko API). Recherche en temps réel, sélection de 5 coins max avec persistance localStorage. |
 | **Rapports** | Graphique en temps réel (Chart.js) des prix des coins sélectionnés. Polling toutes les 1 seconde. |
-| **IA** | Recommandations d'achat par OpenAI basées sur 6 métriques clés. |
 | **À propos** | Infos projet et développeur. |
 
 ## 🛠 Stack technique
@@ -20,7 +19,6 @@ Application SPA professionnelle (niveau Production) construite avec **React**, *
 - Axios
 - Vite
 - CoinGecko API (gratuite)
-- OpenAI API (ChatGPT)
 
 ## 📦 Installation
 
@@ -34,8 +32,6 @@ npm install
 
 # Configurer les clés API
 cp .env.example .env
-# Éditer .env avec ta clé OpenAI (OPENAI_API_KEY)
-# Pour tester la page IA en local : npx vercel dev
 ```
 
 ## ▶️ Lancement
@@ -56,8 +52,8 @@ npm run preview
 ```
 src/
   app/            → Store Redux, hooks typés, routing
-  features/       → Pages (home, reports, ai, about) — feature-based
-  services/       → Couche API (CoinGecko, OpenAI, client HTTP)
+  features/       → Pages (home, reports, about) — feature-based
+  services/       → Couche API (CoinGecko, CryptoCompare, client HTTP)
   components/     → Composants réutilisables (layout, common)
   hooks/          → Custom hooks partagés
   types/          → Interfaces TypeScript
@@ -69,7 +65,6 @@ src/
 | Variable | Description |
 |----------|------------|
 | `VITE_COINGECKO_BASE_URL` | URL de base CoinGecko (défaut: `https://api.coingecko.com/api/v3`) |
-| `OPENAI_API_KEY` | Clé API OpenAI, **côté serveur uniquement** (utilisée par `api/recommend.ts`). Ne jamais la préfixer par `VITE_`. |
 
 ## 🔑 Points clés d'architecture
 
